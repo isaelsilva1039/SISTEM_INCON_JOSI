@@ -1,3 +1,15 @@
+<?php 
+session_start();
+include '../../conexao/Conexao.php';
+include '../../controller/Login/Login.php';
+$login = new Login();
+$usuario = $_SESSION['usuario'];
+$login->validaUsuarioLOgado($usuario);
+// if(!isset($_SESSION['usuario'])){
+//     header('Location: ../../index.php?iformausuario');
+    
+// }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -157,10 +169,11 @@
                             <a href="cadastros.php?cadastro_filial">
                                 <i class="fas fa-chart-bar"></i>Cadastros</a>
                         </li>
-                       <!-- <li>
-                            <a href="../../CoolAdmin-master/table.html">
-                                <i class="fas fa-table"></i>Tables</a>
+                        <li>
+                            <a href="../../controller/Sessao/Sesoes.php">
+                                <i class="fas fa-table"></i>Sair</a>
                         </li>
+                       <!--
                         <li>
                             <a href="form.html">
                                 <i class="far fa-check-square"></i>Forms</a>
@@ -365,10 +378,10 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                            <img src="images/icon/avatar-01.jpg" alt="" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#"><?php echo $_SESSION['usuario'] ?></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -399,7 +412,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="../../controller/Sessao/Sesoes.php">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -411,7 +424,6 @@
                 </div>
             </header>
             <!-- HEADER DESKTOP-->
-
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">

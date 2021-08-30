@@ -1,4 +1,9 @@
-SELECT * FROM "TB_LOGIN";
+SELECT * FROM usuario;
 
-INSERT INTO "TB_LOGIN" VALUES ('ISAEL')
+create table if not exists usuario (
+    id serial,
+    usuario character(255),
+    senha character (255)
+);
 
+insert into usuario(usuario, senha) values ('isael.silva','123')

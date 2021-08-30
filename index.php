@@ -24,6 +24,8 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="asset/css/util.css">
 	<link rel="stylesheet" type="text/css" href="asset/css/main.css">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
 <!--===============================================================================================-->
 </head>
 <body>
@@ -38,7 +40,7 @@
 
 					
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-						<input class="input100" type="text" name="email" autocomplete="" required placeholder="email">
+						<input class="input100" type="text" name="usuario" autocomplete="" required placeholder="email">
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -61,6 +63,9 @@
 								Forgot?
 							</a>
 						</div>
+						<div>
+							
+						</div>
 					</div>
 
 					<div class="container-login100-form-btn m-t-17">
@@ -68,7 +73,15 @@
 							Login
 						</button>
 					</div>
+					<hr>
 
+					<?php 
+							if(isset($_GET['senhaerrada'])){ ?>
+								<div class="alert alert-danger alrta" role="alert">
+  								<p>usuario ou senha errado  !!!</p> 
+ 								</div>
+							 <?php } ?>
+						<hr>
 				</form>
 			</div>
 		</div>

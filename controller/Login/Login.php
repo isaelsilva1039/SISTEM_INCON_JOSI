@@ -1,26 +1,32 @@
 <?php
 
-    require '../conexao/Conexao.php';
-
-
     class Login extends Conexao {
         /*
         metodo resposavel por logar na aplicação
         recebendo usario do model
         com retorno de paginas
         */
-        public function logar(string $usuario, string $senha){
+        public function logar($usuario,  $senha){
 
-            $sql = "Select * from tb_login where usuario = :usuario and senha = :senha ";
+            $sql = "Select * from usuario where usuario = :usuario and senha = :senha ";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(':usuario',$usuario);
             $sql->bindValue(':senha',$senha);
             $sql->execute();
                 if ($sql->rowCount() > 0){
+                    session_start();
+                    $sessaousuario = $_SESSION['usuario'] = $usuario;
                     header('Location: ../views/painel/index.php');
                 }else{
-                    header('Location: ../index.html?senhaerrada');
+                    header('Location: ../index.php?senhaerrada');
                 }
+        }
+
+        public function validaUsuarioLOgado($usuario)
+        {
+            if(!isset($usuario)){
+                header('Location: ../../index.php?iformausuario');
+            }
         }
 
         /* metodo resposavel por deleta usuario aplicação

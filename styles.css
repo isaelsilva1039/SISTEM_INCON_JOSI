@@ -1,0 +1,17 @@
+.alrta{
+    background:orangered;
+    color: white;
+    margin-top: 20px;
+    width: 500px;
+    height: 40px;
+    text-align: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 40px;
+}
+
+.alrta p {
+    text-align: center;
+    color: white;
+    margin-top: 8px;
+}
