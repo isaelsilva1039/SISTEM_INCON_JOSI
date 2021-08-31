@@ -1,6 +1,6 @@
 <?php 
 
-class  Configura{
+ class  Configura{
     
     // nome banco 
     public static function banco (){
@@ -33,6 +33,10 @@ class  Configura{
     public static function dns(){
         $dns = "pgsql";
         return $dns;
+    }
+    public static function porta(){
+        $porta = '5432';
+        return $porta;
     }
 
 

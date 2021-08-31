@@ -22,6 +22,7 @@
                 }
         }
 
+        // metodo para vaidar se o usuario esta logado, caso não esteja voce deve redirecionar ele pra pagina indx
         public function validaUsuarioLOgado($usuario)
         {
             if(!isset($usuario)){
