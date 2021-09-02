@@ -9,8 +9,8 @@ include 'config.php';
            $usuario = Configura::usuario();
            $senha   = Configura::senha();
            $host    = Configura::host();
-           $dns     =  Configura::dns();
-           $porta     =  Configura::porta();
+           $dns     = Configura::dns();
+           $porta   = Configura::porta();
 
             try {
                 $this->db = new PDO("$dns:host=$host;port=$porta;dbname=$banco", "$usuario", "$senha");
