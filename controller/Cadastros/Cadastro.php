@@ -1,5 +1,5 @@
 <?php
-include '../conexao/Conexao.php';
+
 class Cadastro extends  Conexao
 {
 
@@ -26,14 +26,20 @@ class Cadastro extends  Conexao
 
   public function cadastroPedidoAuditoriaResumo($lista)
   {
-    $sql = "INSERT INTO AUDITORIA_WMS_AEREO_ATUALIZADA (usuario_logado,DATA, PEDIDO,I0_FILIAL,d0_bloco,TIPO_AUDITORIA,CID, RUA,TOTAL_OBJETOS,OBJETOS_NAO_CONFORME)
-       values ('$lista[0]','$lista[1]','00', '$lista[2]','$lista[3]','$lista[4]','$lista[5]','$lista[6]','$lista[7]','$lista[8]')";
-    $sql = $this->db->prepare($sql);
-    $sql->execute();
-    if ($sql->rowCount() > 0) {
-      header('Location: ../views/painel/cadastros.php?pedidoDeAuditoriaEmAndamento');
+    // caso for criar um novo pedido, e ja exista um pedido em digitação voltar ele pra tela inicial, infomando que ele tem um pedido em andamento
+    $usuario_Logado = $lista[0];
+    if ($this->ValidadePedidoEmdigitaCaoUsuarioLogado($usuario_Logado) == 1) {
+      header('Location: ../views/painel/cadastros.php?voceTemUmpedidoEmAndamento');
     } else {
-      header('Location: ../views/painel/cadastros.php?erro');
+
+      $sql = "INSERT INTO AUDITORIA_WMS_AEREO_ATUALIZADA (usuario_logado,DATA, PEDIDO,I0_FILIAL,d0_bloco,TIPO_AUDITORIA,CID, RUA,TOTAL_OBJETOS,OBJETOS_NAO_CONFORME,status)values ('$lista[0]','$lista[1]','00', '$lista[2]','$lista[3]','$lista[4]','$lista[5]','$lista[6]','$lista[7]','$lista[8]','digitado')";
+      $sql = $this->db->prepare($sql);
+      $sql->execute();
+      if ($sql->rowCount() > 0) {
+        header('Location: ../views/painel/cadastros.php?pedidoDeAuditoriaEmAndamento');
+      } else {
+        header('Location: ../views/painel/cadastros.php?preenchaTodosOsCampos');
+      }
     }
   }
 
@@ -49,7 +55,7 @@ class Cadastro extends  Conexao
     $sql->bindValue(':CODIGO_AUDITOR',  $CODIGO_AUDITOR);
     $sql->bindValue(':OBJETO',          $OBJETO);
     $sql->bindValue(':VALIDADE_ERRADA', $VALIDADE_ERRADA);
-    $sql->bindValue(':VALIDADE_CORRETA',$VALIDADE_CORRETA);
+    $sql->bindValue(':VALIDADE_CORRETA', $VALIDADE_CORRETA);
     $sql->bindValue(':QTD_PEDIDO',      $QTD_PEDIDO);
     $sql->bindValue(':QTD_ENCONTRADO',  $QTD_ENCONTRADO);
     $sql->bindValue(':CODIGO_OPERADOR', $CODIGO_OPERADOR);
@@ -63,8 +69,16 @@ class Cadastro extends  Conexao
     }
   }
 
-  public  function FunctionName()
+  // caso o susuario logado esta com um pedido em digitação, não deixar ele fazer nem um pedido novo a mais 
+  public  function ValidadePedidoEmdigitaCaoUsuarioLogado($usuario_logado)
   {
-    return "Botão clicado";
+    $consultarUsuarioPedidoPendendete = "SELECT * FROM AUDITORIA_WMS_AEREO_ATUALIZADA WHERE usuario_logado = '$usuario_logado' AND status = 'digitado'";
+    $consultarUsuarioPedidoPendendete = $this->db->prepare($consultarUsuarioPedidoPendendete);
+    $consultarUsuarioPedidoPendendete->execute();
+    if ($consultarUsuarioPedidoPendendete->rowCount() > 0) {
+      return $resut = 1;
+    } else {
+      return $resut = 2;
+    }
   }
 }

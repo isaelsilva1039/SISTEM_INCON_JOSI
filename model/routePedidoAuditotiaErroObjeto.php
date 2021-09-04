@@ -1,5 +1,7 @@
 
 <?php
+include '../conexao/Conexao.php';
+
 require '../controller/Cadastros/Cadastro.php';
 
 $lista[]  =  $data             = $_POST['data'];

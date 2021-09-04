@@ -1,4 +1,5 @@
 <?php
+include '../conexao/Conexao.php';
   require '../controller/Cadastros/Cadastro.php';
   
   $nome            = $_POST['nome'];
@@ -9,10 +10,5 @@
   
   $cadastros = new Cadastro;
   
-  $cadastros->cadastroDizimista(
-      $nome,
-      $endereco,
-      $telefone,
-      $data_nascimento,
-      $idade
+  // $cadastros->cadastroDizimista($nome,$endereco,$telefone,$data_nascimento,$idade
     );

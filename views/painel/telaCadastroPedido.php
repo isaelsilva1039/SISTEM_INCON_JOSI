@@ -149,7 +149,7 @@
                 foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key) :
                 ?>
                     <tr class="tr-shadow">
-                        <th></th>
+                        <th></th>   
                         <td class="status--process"><?php echo $key['pedido'] ?></td>
                         <td class="status--process"><?php echo $key['i0_filial'] ?></td>
                         <td class="status--process"><?php echo $key['codigo_auditor'] ?></td>
@@ -162,9 +162,13 @@
                         <td class="status--process"><?php echo $key['tipo_movimento'] ?></td>
                         <td class="status--process"><?php echo $key['data'] ?></td>
                         <td class="status--process"><?php echo $key['valor_desconto'] ?></td>
-                        <td class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                            <i class="zmdi zmdi-delete"></i>
-                        </td>
+                        <form method="GET" action="../../model/routeDeleteObjeto.php">
+                        <input name="id" type="text" hidden value="<?php echo $key['id']?>"></input>
+                            <td class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                
+                               <button type="submit"><i class="zmdi zmdi-delete" ></i></button>
+                            </td>
+                        </form>
                     <?php endforeach ?>
                     <hr>
                     <div class="table-data-feature">
@@ -184,4 +188,24 @@
             </tbody>
         </table>
     </div>
+    <br>
+
+    <form method="POST" action="../../model/routeBotaoFinalizar.php">
+        <input id="valor_desconto" hidden name="pedido" required placeholder="" type="numbler" required class="form-control cc-cvc" value="<?php echo $pedido ?>" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" onKeyPress="valor()" autocomplete="off">
+        <button type="submit" value="Finalizar" class="btn btn-danger botao">
+            <i class=""> Finalizar</i>
+        </button>
+        </a>
+    </form>
+
+    <form method="POST" action="../../model/routeDelete.php">
+        <input id="cancelar" hidden name="pedido" required placeholder="" type="numbler" required class="form-control cc-cvc" value="<?php echo $pedido ?>" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" onKeyPress="valor()" autocomplete="off">
+        <button type="submit" value="Cancelar" class="btn btn-danger botaoCancela">
+            <i class=""> Cancelar</i>
+        </button>
+        </a>
+    </form>
+
+</div>
+<div>
 </div>

@@ -1,20 +1,29 @@
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
+            <div class="form-group">
+                
+            <?php if($cadastro->ValidadePedidoEmdigitaCaoUsuarioLogado($_SESSION['usuario']) == 1){?>
+
+                <label for="tipo_auditoria" class="control-label mb-1">Voce tem pedidos em Digitação</label>
+                <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"><a href="cadastros.php?pedidoDeAuditoriaEmAndamento">Click aqui</a></span>
+                <?php }  ?>
+            </div>
             <div class="row">
                 <div class="col-lg-6 ">
                     <div class="card aumento">
-                        <div class="card-header">cadastro Erros Aereo</div>
+                        <div class="card-header">Cadastra Resumo De Auditoria</div>
                         <div class="card-body">
                             <div class="card-title">
-                                <h3 class="text-center title-2">Lançar Erro Encontrado
+                                <h3 class="text-center title-2">Lançar Reusmo da Auditoria
                                 </h3>
                             </div>
                             <hr>
                             <form action="../../model/routePedidoAuditoriaResumo.php" method="post" novalidate="novalidate">
                                 <div class="form-group">
                                     <label for="nome" class="control-label mb-1">usuario</label>
-                                    <input id="nome" name="usuario_logado" type="text" placeholder="" value="<?php echo $_SESSION['usuario'] ?>" class="form-control" required>
+                                    <input id="nome" disabled name="usuario_logado" type="text" placeholder="" value="<?php echo $_SESSION['usuario'] ?>" class="form-control" required>
+                                    <input id="nome" hidden name="usuario_logado" type="text" placeholder="" value="<?php echo $_SESSION['usuario'] ?>" class="form-control" required>
                                 </div>
                                 <div class="form-group has-success">
                                     <label for="i0_filial" class="control-label mb-1">Filial</label>
@@ -77,10 +86,11 @@
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <label for="objetos_nao_conforme" class="control-label mb-1">Total De Objetos</label>
+                                        <label for="objetos_nao_conforme" class="control-label mb-1">Objetos Não Encontrado</label>
                                         <div class="input-group">
                                             <input id="objetos_nao_conforme" name="objetos_nao_conforme" required placeholder="" type="numbler" class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" onKeyPress="valor()" autocomplete="off">
                                         </div>
+                                        <!-- <input id="status" name="status" required placeholder="" type="status" class="form-control cc-cvc" value="digitado" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" onKeyPress="valor()" autocomplete="off"> -->
                                     </div><br><br><br>
                                 </div>
                                 <div>

@@ -17,4 +17,5 @@ class ExibirPedido extends PegaUltimoRegistro
             return $sql->fetchAll();
         }
     }
+
 }

@@ -1,9 +1,13 @@
 <?php
 session_start();
+include '../../conexao/Conexao.php';
 include '../../controller/Cadastros/PegaUltimoRegisto.php';
 include '../../controller/Fechc/ExibirPedido.php';
+include '../../controller/Cadastros/Cadastro.php';
 $pagarultimoRegisto = new PegaUltimoRegistro();
 $exibirRelatorio = new ExibirPedido();
+$cadastro = new Cadastro();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -251,9 +255,10 @@ $exibirRelatorio = new ExibirPedido();
             <!-- HEADER DESKTOP-->
             <?php require 'header.php'; ?>
             <!-- HEADER DESKTOP-->
+            <!-- caso tenha um pedido em digitação, redireciona pra tela que tem o pedido em digitação -->
             <?php
 
-            //       caso o cadastro de filial estiver ok
+            //caso o cadastro de filial estiver ok
             if (isset($_GET['ok'])) {
                 echo '<!DOCTYPE html>';
                 echo '<html xmlns="http://www.w3.org/1999/xhtml">';
@@ -356,6 +361,17 @@ $exibirRelatorio = new ExibirPedido();
                         <?php } ?>
                         <!-- MAIN CONTENT-->
                         <?php
+                        if (isset($_GET['erro'])) {
+                            include 'erro.php';
+                        }
+                        if (isset($_GET['voceTemUmpedidoEmAndamento'])) {
+                            include 'msg_tela.php';
+                        }
+                        
+                        if (isset($_GET['preenchaTodosOsCampos'])) {
+                            include 'msg_tela_campos_vazio.php';
+                        }
+                        
                         // chamar tela de resumo de erro pra cadastra uma nova auditoria 
                         if (isset($_GET['cadastro_erros_aereo'])) {
                             include 'cadastraResumoAuditoria.php';
@@ -363,11 +379,17 @@ $exibirRelatorio = new ExibirPedido();
                         <!-- pedido de auditoria chmart tela de cadasteo de erro por objeto -->
                         <?php
                         if (isset($_GET['pedidoDeAuditoriaEmAndamento'])) {
-                                 $pedido = $pagarultimoRegisto->pegarUltimoIdPorUsuarioLogado($_SESSION['usuario'])[0];
-                                 $filial = $pagarultimoRegisto->pegarUltimoIdPorUsuarioLogado($_SESSION['usuario'])['i0_filial'];
+                            $pedido = $pagarultimoRegisto->pegarUltimoIdPorUsuarioLogado($_SESSION['usuario'])[0];
+                            $filial = $pagarultimoRegisto->pegarUltimoIdPorUsuarioLogado($_SESSION['usuario'])['i0_filial'];
                             include 'telaCadastroPedido.php';
                         } ?>
-                        <?php require 'footJavascrip.html'; ?>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <?php require 'footJavascrip.html'; ?>
 
 </body>
 <script>
