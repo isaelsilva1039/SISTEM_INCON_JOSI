@@ -9,7 +9,7 @@ class PegaUltimoRegistro extends Conexao {
       $sql = $this->db->prepare($sql);
       $sql->execute();
       if ($sql->rowCount() > 0) {
-        $numeroPedidoAuditoria = $sql->fetch()[0];
+        $numeroPedidoAuditoria = $sql->fetch();
         return $numeroPedidoAuditoria; 
       }else {
         return "Sem pedido encontrado pra esse usuario";

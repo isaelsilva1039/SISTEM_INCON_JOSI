@@ -1,12 +1,10 @@
 <?php
 session_start();
-
 include '../../controller/Cadastros/PegaUltimoRegisto.php';
-
+include '../../controller/Fechc/ExibirPedido.php';
 $pagarultimoRegisto = new PegaUltimoRegistro();
-
+$exibirRelatorio = new ExibirPedido();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,10 +15,8 @@ $pagarultimoRegisto = new PegaUltimoRegistro();
     <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
-
     <!-- Title Page-->
     <title>Dashboard</title>
-
     <?php
     require 'head_css.html';
     ?>
@@ -255,11 +251,9 @@ $pagarultimoRegisto = new PegaUltimoRegistro();
             <!-- HEADER DESKTOP-->
             <?php require 'header.php'; ?>
             <!-- HEADER DESKTOP-->
-            <br>
-            <br>
-            <br>
             <?php
-            //        caso o cadastro de filial estiver ok
+
+            //       caso o cadastro de filial estiver ok
             if (isset($_GET['ok'])) {
                 echo '<!DOCTYPE html>';
                 echo '<html xmlns="http://www.w3.org/1999/xhtml">';
@@ -344,7 +338,6 @@ $pagarultimoRegisto = new PegaUltimoRegistro();
                                                             <input id="D0_REGIONAL" id="D0_REGIONAL" name="D0_REGIONAL" type="text" class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" onKeyPress="valor1()" autocomplete="off">
                                                         </div>
                                                     </div>
-
                                                 </div>
                                         </div>
                                         <div>
@@ -360,7 +353,6 @@ $pagarultimoRegisto = new PegaUltimoRegistro();
                             </div>
                         </div>
                         <div>
-
                         <?php } ?>
                         <!-- MAIN CONTENT-->
                         <?php
@@ -371,7 +363,8 @@ $pagarultimoRegisto = new PegaUltimoRegistro();
                         <!-- pedido de auditoria chmart tela de cadasteo de erro por objeto -->
                         <?php
                         if (isset($_GET['pedidoDeAuditoriaEmAndamento'])) {
-                            $pedido = $pagarultimoRegisto->pegarUltimoIdPorUsuarioLogado($_SESSION['usuario']);
+                                 $pedido = $pagarultimoRegisto->pegarUltimoIdPorUsuarioLogado($_SESSION['usuario'])[0];
+                                 $filial = $pagarultimoRegisto->pegarUltimoIdPorUsuarioLogado($_SESSION['usuario'])['i0_filial'];
                             include 'telaCadastroPedido.php';
                         } ?>
                         <?php require 'footJavascrip.html'; ?>
