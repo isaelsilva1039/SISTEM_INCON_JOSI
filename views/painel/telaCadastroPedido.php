@@ -15,12 +15,10 @@
                             <hr>
                             <form action="../../model/routePedidoAuditotiaErroObjeto.php" method="post" novalidate="novalidate">
                                 <input id="pedido" name="pedido" hidden type="text" placeholder="" value="<?php echo $pedido ?>" class="form-control" required>
-
                                 <div class="form-group">
                                     <label for="usuario_logado" class="control-label mb-1">usuario</label>
                                     <input id="usuario_logado" disabled name="usuario_logado" type="text" placeholder="" value="<?php echo $_SESSION['usuario'] ?>" class="form-control" required>
                                 </div>
-
                                 <div class="form-group has-success">
                                     <div class="form-group">
                                         <label for="i0_filial" class="control-label mb-1">Filial</label>
@@ -41,7 +39,6 @@
                                                 <input name="objeto" required placeholder="" type="numbler" class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" onKeyPress="valor()" autocomplete="off" required>
                                             </div>
                                         </div>
-
                                         <div class="col-6">
                                             <label for="validade_errada" class="control-label mb-1">validade errada</label>
                                             <div class="input-group">
@@ -73,7 +70,6 @@
                                                 <input id="codigo_operador" name="codigo_operador" required placeholder="" type="numbler" class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" required onKeyPress="valor()" autocomplete="off">
                                             </div>
                                         </div>
-
                                         <div class="col-6">
                                             <label for="tipo_movimento" class="control-label mb-1">Tipo Movimento</label>
                                             <div class="input-group">
@@ -149,8 +145,8 @@
                 foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key) :
                 ?>
                     <tr class="tr-shadow">
-                        <th></th>   
-                        <td class="status--process"><?php echo $key['pedido'] ?></td>
+                        <th></th>
+                        <td class="status--process"><?php echo $id = $key['pedido'] ?></td>
                         <td class="status--process"><?php echo $key['i0_filial'] ?></td>
                         <td class="status--process"><?php echo $key['codigo_auditor'] ?></td>
                         <td class="status--process"><?php echo $key['objeto'] ?></td>
@@ -163,10 +159,10 @@
                         <td class="status--process"><?php echo $key['data'] ?></td>
                         <td class="status--process"><?php echo $key['valor_desconto'] ?></td>
                         <form method="GET" action="../../model/routeDeleteObjeto.php">
-                        <input name="id" type="text" hidden value="<?php echo $key['id']?>"></input>
+                            <input name="id" type="text" hidden value="<?php echo $key['id'] ?>"></input>
                             <td class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                
-                               <button type="submit"><i class="zmdi zmdi-delete" ></i></button>
+
+                                <button type="submit"><i class="zmdi zmdi-delete"></i></button>
                             </td>
                         </form>
                     <?php endforeach ?>
@@ -189,15 +185,20 @@
         </table>
     </div>
     <br>
-
     <form method="POST" action="../../model/routeBotaoFinalizar.php">
         <input id="valor_desconto" hidden name="pedido" required placeholder="" type="numbler" required class="form-control cc-cvc" value="<?php echo $pedido ?>" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" onKeyPress="valor()" autocomplete="off">
-        <button type="submit" value="Finalizar" class="btn btn-danger botao">
-            <i class=""> Finalizar</i>
-        </button>
+        <?php if (!isset($id)) { ?>
+            <button type="submit" hidden value="Finalizar" class="btn btn-danger botao">
+                <i class=""> Finalizar</i>
+            </button>
+        <?php } ?>
+        <?php if (isset($id)) { ?>
+            <button type="submit" value="Finalizar" class="btn btn-danger botao">
+                <i class=""> Finalizar</i>
+            </button>
+        <?php } ?>
         </a>
     </form>
-
     <form method="POST" action="../../model/routeDelete.php">
         <input id="cancelar" hidden name="pedido" required placeholder="" type="numbler" required class="form-control cc-cvc" value="<?php echo $pedido ?>" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" onKeyPress="valor()" autocomplete="off">
         <button type="submit" value="Cancelar" class="btn btn-danger botaoCancela">
@@ -205,7 +206,6 @@
         </button>
         </a>
     </form>
-
 </div>
 <div>
 </div>

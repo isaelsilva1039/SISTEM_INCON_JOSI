@@ -1,6 +1,7 @@
 <?php
 
-class ExibirPedido extends PegaUltimoRegistro
+// include '../../controller/Cadastros/PegaUltimoRegisto.php';
+class ExibirPedido extends Conexao
 {
     public  function pegarPedido($PEDIDO)
     {
