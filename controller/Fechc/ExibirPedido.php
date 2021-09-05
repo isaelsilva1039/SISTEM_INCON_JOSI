@@ -1,6 +1,6 @@
 <?php
 
-// include '../../controller/Cadastros/PegaUltimoRegisto.php';
+// include '../../autoload.php';
 class ExibirPedido extends Conexao
 {
     public  function pegarPedido($PEDIDO)

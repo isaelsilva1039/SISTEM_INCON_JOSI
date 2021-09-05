@@ -1,13 +1,12 @@
 <?php
 session_start();
-include '../../conexao/Conexao.php';
-include '../../controller/Cadastros/PegaUltimoRegisto.php';
-include '../../controller/Fechc/ExibirPedido.php';
-include '../../controller/Cadastros/Cadastro.php';
-$pagarultimoRegisto = new PegaUltimoRegistro();
-$exibirRelatorio = new ExibirPedido();
-$cadastro = new Cadastro();
-
+require_once '../../autoload.php';
+@$usuario           = $_SESSION['usuario'];
+$login              = new Login();
+$pagarultimoRegisto = new PegaUltimoRegisto;
+$exibirRelatorio    = new ExibirPedido();
+$cadastro           = new Cadastro();
+$login->validaUsuarioLOgado($usuario);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,8 +21,8 @@ $cadastro = new Cadastro();
     <!-- Title Page-->
     <title>Dashboard</title>
     <?php
-    require 'head_css.html';
-    ?>
+require 'head_css.html';
+?>
 </head>
 
 <body class="animsition">
@@ -253,33 +252,33 @@ $cadastro = new Cadastro();
         <!-- PAGE CONTAINER-->
         <div class="page-container">
             <!-- HEADER DESKTOP-->
-            <?php require 'header.php'; ?>
+            <?php require 'header.php';?>
             <!-- HEADER DESKTOP-->
             <!-- caso tenha um pedido em digitação, redireciona pra tela que tem o pedido em digitação -->
             <?php
 
-            //caso o cadastro de filial estiver ok
-            if (isset($_GET['ok'])) {
-                echo '<!DOCTYPE html>';
-                echo '<html xmlns="http://www.w3.org/1999/xhtml">';
-                echo '<head>';
-                echo '   <meta http-equiv="refresh" content="2; url=http:cadastros.php?cadastro_filial">';
-                echo '</head>';
-                echo '<body class="msg" onload="alert("Cadastrado com sucesso");">';
-                echo '<a href="http:../views/painel/cadastros.php?cadastro_filial" ></a>';
-                echo '<button id="payment-button" type="submit"';
-                echo 'class="btn btn-lg btn-info btn-block">';
-                echo '<i class="fa fa-check-circle fa-lg"></i>';
-                echo '<span id="payment-button-amount">Filial Cadastrada</span>';
-                echo '<span id="payment-button-sending"';
-                echo 'style="display:none;">Sending…</span>';
-                echo '</button>';
-                echo '</body>';
-                echo '</html>';
-            }
+//caso o cadastro de filial estiver ok
+if (isset($_GET['ok'])) {
+    echo '<!DOCTYPE html>';
+    echo '<html xmlns="http://www.w3.org/1999/xhtml">';
+    echo '<head>';
+    echo '   <meta http-equiv="refresh" content="2; url=http:cadastros.php?cadastro_filial">';
+    echo '</head>';
+    echo '<body class="msg" onload="alert("Cadastrado com sucesso");">';
+    echo '<a href="http:../views/painel/cadastros.php?cadastro_filial" ></a>';
+    echo '<button id="payment-button" type="submit"';
+    echo 'class="btn btn-lg btn-info btn-block">';
+    echo '<i class="fa fa-check-circle fa-lg"></i>';
+    echo '<span id="payment-button-amount">Filial Cadastrada</span>';
+    echo '<span id="payment-button-sending"';
+    echo 'style="display:none;">Sending…</span>';
+    echo '</button>';
+    echo '</body>';
+    echo '</html>';
+}
 
-            if (isset($_GET['cadastro_filial'])) {
-            ?>
+if (isset($_GET['cadastro_filial'])) {
+    ?>
                 <div class="main-content">
                     <div class="section__content section__content--p30">
                         <div class="container-fluid">
@@ -358,38 +357,38 @@ $cadastro = new Cadastro();
                             </div>
                         </div>
                         <div>
-                        <?php } ?>
+                        <?php }?>
                         <!-- MAIN CONTENT-->
                         <?php
-                        if (isset($_GET['erro'])) {
-                            include 'erro.php';
-                        }
-                        if (isset($_GET['voceTemUmpedidoEmAndamento'])) {
-                            include 'msg_tela.php';
-                        }
-                        
-                        if (isset($_GET['preenchaTodosOsCampos'])) {
-                            include 'msg_tela_campos_vazio.php';
-                        }
-                        
-                        // chamar tela de resumo de erro pra cadastra uma nova auditoria 
-                        if (isset($_GET['cadastro_erros_aereo'])) {
-                            include 'cadastraResumoAuditoria.php';
-                        } ?>
+if (isset($_GET['erro'])) {
+    include 'erro.php';
+}
+if (isset($_GET['voceTemUmpedidoEmAndamento'])) {
+    include 'msg_tela.php';
+}
+
+if (isset($_GET['preenchaTodosOsCampos'])) {
+    include 'msg_tela_campos_vazio.php';
+}
+
+// chamar tela de resumo de erro pra cadastra uma nova auditoria
+if (isset($_GET['cadastro_erros_aereo'])) {
+    include 'cadastraResumoAuditoria.php';
+}?>
                         <!-- pedido de auditoria chmart tela de cadasteo de erro por objeto -->
                         <?php
-                        if (isset($_GET['pedidoDeAuditoriaEmAndamento'])) {
-                            $pedido = $pagarultimoRegisto->pegarUltimoIdPorUsuarioLogado($_SESSION['usuario'])[0];
-                            $filial = $pagarultimoRegisto->pegarUltimoIdPorUsuarioLogado($_SESSION['usuario'])['i0_filial'];
-                            include 'telaCadastroPedido.php';
-                        } ?>
+if (isset($_GET['pedidoDeAuditoriaEmAndamento'])) {
+    $pedido = $pagarultimoRegisto->pegarUltimoIdPorUsuarioLogado($_SESSION['usuario'])[0];
+    $filial = $pagarultimoRegisto->pegarUltimoIdPorUsuarioLogado($_SESSION['usuario'])['i0_filial'];
+    include 'telaCadastroPedido.php';
+}?>
 
                         </div>
                     </div>
                 </div>
         </div>
     </div>
-    <?php require 'footJavascrip.html'; ?>
+    <?php require 'footJavascrip.html';?>
 
 </body>
 <script>

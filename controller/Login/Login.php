@@ -1,11 +1,6 @@
 <?php
-
     class Login extends Conexao {
-        /*
-        metodo resposavel por logar na aplicação
-        recebendo usario do model
-        com retorno de paginas
-        */
+        /* metodo resposavel por logar na aplicação recebendo usario do model com retorno de paginas */
         public function logar($usuario,  $senha){
 
             $sql = "Select * from usuario where usuario = :usuario and senha = :senha ";
@@ -21,7 +16,6 @@
                     header('Location: ../index.php?senhaerrada');
                 }
         }
-
         // metodo para vaidar se o usuario esta logado, caso não esteja voce deve redirecionar ele pra pagina indx
         public function validaUsuarioLOgado($usuario)
         {
@@ -29,11 +23,7 @@
                 header('Location: ../../index.php?iformausuario');
             }
         }
-
-        /* metodo resposavel por deleta usuario aplicação
-        recebendo id do model
-        com retorno de paginas
-        */
+        /* metodo resposavel por deleta usuario aplicação recebendo id do model  com retorno de paginas */
         public function DeletaUsuario(int $id){
             $sql = "DELETE FROM `login` WHERE id = :id  ";
             $sql = $this->db->prepare($sql);

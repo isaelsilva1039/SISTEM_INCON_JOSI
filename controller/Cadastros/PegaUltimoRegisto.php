@@ -1,7 +1,7 @@
 <?php 
 // include '../../controller/Cadastros/Cadastro.php';
-// include '../../conexao/Conexao.php'; 
-class PegaUltimoRegistro extends Conexao {
+
+class PegaUltimoRegisto extends Conexao {
 
     public function pegarUltimoIdPorUsuarioLogado($usuario_logado)
     {

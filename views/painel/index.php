@@ -1,18 +1,12 @@
 <?php 
 session_start();
-include '../../conexao/Conexao.php';
-include '../../controller/Login/Login.php';
+require_once '../../autoload.php';
 $login = new Login();
 $usuario = $_SESSION['usuario'];
 $login->validaUsuarioLOgado($usuario);
-// if(!isset($_SESSION['usuario'])){
-//     header('Location: ../../index.php?iformausuario');
-    
-// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
