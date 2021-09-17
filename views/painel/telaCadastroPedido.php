@@ -146,7 +146,6 @@
                 <?php
                 foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key) :
                 ?>
-                data, PEDIDO, USUARIO_LOGADO, I0_FILIAL,CODIGO_AUDITOR,OBJETO,VALIDADE_ERRADA,VALIDADE_CORRETA,QTD_PEDIDO,QTD_ENCONTRADO,CODIGO_OPERADOR,NOME_OPERADOR,TIPO_MOVIMENTO,VALOR_DESCONTO)data, PEDIDO, USUARIO_LOGADO, I0_FILIAL,CODIGO_AUDITOR,OBJETO,VALIDADE_ERRADA,VALIDADE_CORRETA,QTD_PEDIDO,QTD_ENCONTRADO,CODIGO_OPERADOR,NOME_OPERADOR,TIPO_MOVIMENTO,VALOR_DESCONTO)
                     <tr class="tr-shadow">
                         <th></th>
                         <td class="status--process"><?php echo $id = $key['PEDIDO'] ?></td>
