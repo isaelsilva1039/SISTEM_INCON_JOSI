@@ -13,7 +13,7 @@
     public static function host (){
         // $host = "192.168.87.250";
         // $host="localhost";
-           $host = "localhost";
+           $host = "185.201.10.73";
         return $host;
     }
 
