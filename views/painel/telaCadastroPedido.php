@@ -146,20 +146,21 @@
                 <?php
                 foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key) :
                 ?>
+                data, PEDIDO, USUARIO_LOGADO, I0_FILIAL,CODIGO_AUDITOR,OBJETO,VALIDADE_ERRADA,VALIDADE_CORRETA,QTD_PEDIDO,QTD_ENCONTRADO,CODIGO_OPERADOR,NOME_OPERADOR,TIPO_MOVIMENTO,VALOR_DESCONTO)data, PEDIDO, USUARIO_LOGADO, I0_FILIAL,CODIGO_AUDITOR,OBJETO,VALIDADE_ERRADA,VALIDADE_CORRETA,QTD_PEDIDO,QTD_ENCONTRADO,CODIGO_OPERADOR,NOME_OPERADOR,TIPO_MOVIMENTO,VALOR_DESCONTO)
                     <tr class="tr-shadow">
                         <th></th>
-                        <td class="status--process"><?php echo $id = $key['pedido'] ?></td>
-                        <td class="status--process"><?php echo $key['i0_filial'] ?></td>
-                        <td class="status--process"><?php echo $key['codigo_auditor'] ?></td>
-                        <td class="status--process"><?php echo $key['objeto'] ?></td>
-                        <td class="status--process"><?php echo $key['validade_errada'] ?></td>
-                        <td class="status--process"><?php echo $key['validade_correta'] ?></td>
-                        <td class="status--process"><?php echo $key['qtd_pedido'] ?></td>
-                        <td class="status--process"><?php echo $key['qtd_encontrado'] ?></td>
-                        <td class="status--process"><?php echo $key['codigo_operador'] ?></td>
-                        <td class="status--process"><?php echo $key['tipo_movimento'] ?></td>
+                        <td class="status--process"><?php echo $id = $key['PEDIDO'] ?></td>
+                        <td class="status--process"><?php echo $key['I0_FILIAL'] ?></td>
+                        <td class="status--process"><?php echo $key['CODIGO_AUDITOR'] ?></td>
+                        <td class="status--process"><?php echo $key['OBJETO'] ?></td>
+                        <td class="status--process"><?php echo $key['VALIDADE_ERRADA'] ?></td>
+                        <td class="status--process"><?php echo $key['VALIDADE_CORRETA'] ?></td>
+                        <td class="status--process"><?php echo $key['QTD_PEDIDO'] ?></td>
+                        <td class="status--process"><?php echo $key['QTD_ENCONTRADO'] ?></td>
+                        <td class="status--process"><?php echo $key['CODIGO_OPERADOR'] ?></td>
+                        <td class="status--process"><?php echo $key['TIPO_MOVIMENTO'] ?></td>
                         <td class="status--process"><?php echo $key['data'] ?></td>
-                        <td class="status--process"><?php echo $key['valor_desconto'] ?></td>
+                        <td class="status--process"><?php echo $key['VALOR_DESCONTO'] ?></td>
                         <form method="GET" action="../../model/routeDeleteObjeto.php">
                             <input name="id" type="text" hidden value="<?php echo $key['id'] ?>"></input>
                             <td class="item" data-toggle="tooltip" data-placement="top" title="Delete">

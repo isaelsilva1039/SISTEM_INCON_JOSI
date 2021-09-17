@@ -1,11 +1,11 @@
 <?php
 session_start();
 require_once '../../autoload.php';
-@$usuario           = $_SESSION['usuario'];
-$login              = new Login();
+@$usuario = $_SESSION['usuario'];
+$login = new Login();
 $pagarultimoRegisto = new PegaUltimoRegisto;
-$exibirRelatorio    = new ExibirPedido();
-$cadastro           = new Cadastro();
+$exibirRelatorio = new ExibirPedido();
+$cadastro = new Cadastro();
 $login->validaUsuarioLOgado($usuario);
 ?>
 <!DOCTYPE html>
@@ -379,7 +379,7 @@ if (isset($_GET['cadastro_erros_aereo'])) {
                         <?php
 if (isset($_GET['pedidoDeAuditoriaEmAndamento'])) {
     $pedido = $pagarultimoRegisto->pegarUltimoIdPorUsuarioLogado($_SESSION['usuario'])[0];
-    $filial = $pagarultimoRegisto->pegarUltimoIdPorUsuarioLogado($_SESSION['usuario'])['i0_filial'];
+    $filial = $pagarultimoRegisto->pegarUltimoIdPorUsuarioLogado($_SESSION['usuario'])[4]; // esse numero e fererente a posição da filial na tabela
     include 'telaCadastroPedido.php';
 }?>
 
