@@ -1,7 +1,6 @@
 
 <?php
 include '../conexao/Conexao.php';
-
 require '../controller/Cadastros/Cadastro.php';
 
 $lista[]  =  $data             = $_POST['data'];
@@ -17,6 +16,7 @@ $lista[]  =  $QTD_ENCONTRADO   = $_POST['qtd_encontrada'];
 $lista[]  =  $CODIGO_OPERADOR  = $_POST['codigo_operador'];
 $lista[]  =  $TIPO_MOVIMENTO   = $_POST['tipo_movimento'];
 $lista[]  =  $VALOR_DESCONTO   = $_POST['valor_desconto'];
+
 
 $cadastros = new Cadastro();
 $cadastros->cadastroPedidoAuditoriaPorObjetoEpedido(

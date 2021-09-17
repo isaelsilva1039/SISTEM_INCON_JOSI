@@ -1,7 +1,7 @@
 <?php
     class Login extends Conexao {
         /* metodo resposavel por logar na aplicação recebendo usario do model com retorno de paginas */
-        public function logar($usuario,  $senha){
+        public function logar($usuario,$senha){
 
             $sql = "Select * from usuario where usuario = :usuario and senha = :senha ";
             $sql = $this->db->prepare($sql);

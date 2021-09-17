@@ -18,6 +18,8 @@
                                 <div class="form-group">
                                     <label for="usuario_logado" class="control-label mb-1">usuario</label>
                                     <input id="usuario_logado" disabled name="usuario_logado" type="text" placeholder="" value="<?php echo $_SESSION['usuario'] ?>" class="form-control" required>
+                                    <input id="usuario_logado" hidden name="usuario_logado" type="text" placeholder="" value="<?php echo $_SESSION['usuario'] ?>" class="form-control" required>
+                         
                                 </div>
                                 <div class="form-group has-success">
                                     <div class="form-group">

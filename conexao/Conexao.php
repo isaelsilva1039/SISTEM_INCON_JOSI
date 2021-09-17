@@ -14,7 +14,7 @@ include 'config.php';
            $porta   = Configura::porta();
 
             try {
-                $this->db = new PDO("$dns:host=$host;port=$porta;dbname=$banco", "$usuario", "$senha");
+                $this->db = new PDO("$dns:host=$host;dbname=$banco", "$usuario", "$senha");
             }catch (PDOException $e){
                 echo  "Falha ao conctar ao banco de dados";
                 die($e->getMessage());
