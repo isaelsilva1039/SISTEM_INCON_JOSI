@@ -4,7 +4,7 @@
     class Delete extends Cadastro{
        
         public function deletaPedidoQueNaoVaiSerUsado($id){
-            $sql = "DELETE FROM AUDITORIA_WMS_AEREO_ATUALIZADA  where id = '$id'";
+            $sql = "DELETE FROM auditoria_wms_aereo_atualizada  where id = '$id'";
             $sql = $this->db->prepare($sql);
             $sql->execute();
             if($sql->rowCount() > 0){

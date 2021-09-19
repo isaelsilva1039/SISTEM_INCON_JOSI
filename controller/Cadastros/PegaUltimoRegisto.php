@@ -5,7 +5,7 @@ class PegaUltimoRegisto extends Conexao {
 
     public function pegarUltimoIdPorUsuarioLogado($usuario_logado)
     {
-      $sql=" SELECT  * FROM  AUDITORIA_WMS_AEREO_ATUALIZADA  where usuario_logado = '$usuario_logado' order by id desc limit 1";
+      $sql=" SELECT  * FROM  auditoria_wms_aereo_atualizada  where usuario_logado = '$usuario_logado' order by id desc limit 1";
       $sql = $this->db->prepare($sql);
       $sql->execute();
       if ($sql->rowCount() > 0) {

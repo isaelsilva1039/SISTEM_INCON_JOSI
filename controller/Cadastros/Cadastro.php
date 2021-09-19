@@ -84,7 +84,7 @@ class Cadastro extends Conexao
     // caso o susuario logado esta com um pedido em digitação, não deixar ele fazer nem um pedido novo a mais
     public function ValidadePedidoEmdigitaCaoUsuarioLogado($usuario_logado)
     {
-        $consultarUsuarioPedidoPendendete = "SELECT * FROM AUDITORIA_WMS_AEREO_ATUALIZADA WHERE usuario_logado = '$usuario_logado' AND status = 'digitado'";
+        $consultarUsuarioPedidoPendendete = "SELECT * FROM auditoria_wms_aereo_atualizada WHERE usuario_logado = '$usuario_logado' AND status = 'digitado'";
         $consultarUsuarioPedidoPendendete = $this->db->prepare($consultarUsuarioPedidoPendendete);
         $consultarUsuarioPedidoPendendete->execute();
         if ($consultarUsuarioPedidoPendendete->rowCount() > 0) {
