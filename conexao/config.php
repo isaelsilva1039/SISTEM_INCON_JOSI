@@ -6,7 +6,7 @@
     public static function banco (){
         //$banco = "BI_LOGISTICA";
         //$banco = "postgres";
-        $banco = "u119780054_BI_LOGISTICA";
+        $banco = "u119780054_bi_logistica";
         return $banco;
     }
     // host do banco 
@@ -20,9 +20,9 @@
     // usuario do banco
     public static function usuario(){
         // $usuario = "logistica";
-        // $usuario = "ROOT"
+        $usuario = "root";
         // $usuario = "postgres";
-        $usuario = "u119780054_logistica";
+        // $usuario = "u119780054_logistica";
         return $usuario;
 
     }
@@ -30,8 +30,8 @@
     // senha do banco 
     public static function senha (){
         // $senha = "logisticabls";
-        //$senha = 123;
-        $senha = "Isaelsilva@1039";
+        $senha = "";
+        // $senha = "Isaelsilva@1039";
         // Isaelsilva@1039   senha do banco de dados  MYSQL produção 
         return $senha;
     }
