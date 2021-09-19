@@ -33,7 +33,7 @@ class Cadastro extends Conexao
         if ($this->ValidadePedidoEmdigitaCaoUsuarioLogado($usuario_logado) == 1) {
             header('Location: ../views/painel/cadastros.php?voceTemUmpedidoEmAndamento');
         } else {
-            $sql = "INSERT INTO AUDITORIA_WMS_AEREO_ATUALIZADA (usuario_logado,DATA, PEDIDO,I0_FILIAL,d0_bloco,TIPO_AUDITORIA,CID, RUA,TOTAL_OBJETOS,OBJETOS_NAO_CONFORME,status)values 
+            $sql = "INSERT INTO auditoria_wms_aereo_atualizada (usuario_logado,DATA, PEDIDO,I0_FILIAL,d0_bloco,TIPO_AUDITORIA,CID, RUA,TOTAL_OBJETOS,OBJETOS_NAO_CONFORME,status)values 
             (:usuario_logado,:DATA,'00', :I0_FILIAL,:d0_bloco,:TIPO_AUDITORIA,:CID,:RUA,:TOTAL_OBJETOS,:OBJETOS_NAO_CONFORME,'digitado')";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(':usuario_logado', $usuario_logado);
@@ -54,7 +54,7 @@ class Cadastro extends Conexao
         }
     }
 
-    // cadastra erros dentro do resumo da auditoria
+    // cadastra erros dentro do resumo da auditoria 
     public function cadastroPedidoAuditoriaPorObjetoEpedido($lista, $data, $PEDIDO, $USUARIO_LOGADO, $I0_FILIAL, $CODIGO_AUDITOR, $OBJETO, $VALIDADE_ERRADA, $VALIDADE_CORRETA, $QTD_PEDIDO, $QTD_ENCONTRADO, $CODIGO_OPERADOR, $TIPO_MOVIMENTO, $VALOR_DESCONTO)
     {
         $sql = "insert into auditoria_wms_aereo_objetos_atualizada(data, PEDIDO, USUARIO_LOGADO, I0_FILIAL,CODIGO_AUDITOR,OBJETO,VALIDADE_ERRADA,VALIDADE_CORRETA,QTD_PEDIDO,QTD_ENCONTRADO,CODIGO_OPERADOR,NOME_OPERADOR,TIPO_MOVIMENTO,VALOR_DESCONTO)

@@ -7,7 +7,7 @@ class Updat extends Cadastro
     {
 
        
-        $sql = "UPDATE AUDITORIA_WMS_AEREO_ATUALIZADA SET status = 'Finalizado' where id = '$pedido'";
+        $sql = "UPDATE auditoria_wms_aereo_atualizada SET status = 'Finalizado' where id = '$pedido'";
         $sql = $this->db->prepare($sql);
         $sql->execute();
         if ($sql->rowCount() > 0) {
