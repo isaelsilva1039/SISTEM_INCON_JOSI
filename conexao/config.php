@@ -13,7 +13,7 @@
     public static function host (){
         // $host = "192.168.87.250";
         // $host="localhost";
-           $host = "185.201.10.73";
+           $host = "localhost";
         return $host;
     }
 
@@ -22,7 +22,7 @@
         // $usuario = "logistica";
         // $usuario = "ROOT"
         // $usuario = "postgres";
-        $usuario = "u119780054_logistica";
+        $usuario = "root";
         return $usuario;
 
     }
@@ -31,7 +31,7 @@
     public static function senha (){
         // $senha = "logisticabls";
         //$senha = 123;
-        $senha = "Isaelsilva@1039";
+        $senha = "";
 
         // Isaelsilva@1039   senha do banco de dados  MYSQL produção 
         return $senha;
