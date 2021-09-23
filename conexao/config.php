@@ -19,10 +19,10 @@
 
     // usuario do banco
     public static function usuario(){
-        // $usuario = "logistica";
+        $usuario = "logistica";
         // $usuario = "ROOT"
         // $usuario = "postgres";
-        $usuario = "root";
+        // $usuario = "root";
         return $usuario;
 
     }
