@@ -5,7 +5,7 @@ class ExibirPedido extends Conexao
 {
     public  function pegarPedido($PEDIDO)
     {
-        $sql = "SELECT  * FROM auditoria_wms_aereo_objetos_atualizada WHERE PEDIDO = :PEDIDO ";
+        $sql = "SELECT  * FROM auditoria_wms_aereo_objetos_atualizada WHERE PEDIDO = :PEDIDO order by id desc ";
         $sql = $this->db->prepare($sql);
         $sql->bindValue(':PEDIDO', $PEDIDO);
         $sql->execute();
