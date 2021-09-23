@@ -32,7 +32,6 @@
         // $senha = "logisticabls";
         //$senha = 123;
         $senha = "Isaelsilva@1039";
-
         // Isaelsilva@1039   senha do banco de dados  MYSQL produção 
         return $senha;
     }
@@ -47,6 +46,5 @@
         // $porta = '5432';
         // return $porta;
     }
-
 }
 
