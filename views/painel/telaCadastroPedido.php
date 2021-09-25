@@ -13,10 +13,13 @@
                     </th>
                     <th>Pedido</th>
                     <th>Codigo Do auditor</th>
+
                     <th>Nome Auditor</th>
                     <th>Objeto</th>
                     <th>Cod Operador</th>
                     <th>Nome Operador</th>
+                    <th>Objeto</th>
+                    <th>Cod Operador</th>
                     <th>Tipo</th>
                     <th>Data auditoria</th>
                     <th>Valor Desconto</th>
@@ -35,6 +38,8 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                         <td class=" font"><?php echo $key['OBJETO'] ?></td>
                         <td class=" font"><?php echo $key['CODIGO_OPERADOR'] ?></td>
                         <td class=" font"><?php echo $key['NOME_OPERADOR'] ?></td>
+                        <td class=" font"><?php echo $key['OBJETO'] ?></td>
+                        <td class=" font"><?php echo $key['CODIGO_OPERADOR'] ?></td>
                         <td class=" font"><?php echo $key['TIPO_MOVIMENTO'] ?></td>
                         <td class=" font"><?php echo $key['data'] ?></td>
                         <td class=" font"><?php echo $key['VALOR_DESCONTO'] ?></td>
@@ -58,9 +63,10 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
 </div>
 <div>
 </div>
-
         </div>
         <div class="container-fluid  fixede ">
+        </div>
+        <div class="container-fluid  fixede">
             <div class="row ">
                 <div class="col-lg-6 aumento">
                     <div class="card aumento">
@@ -72,7 +78,6 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                                     <label for="usuario_logado" hidden class="control-label mb-1">usuario</label>
                                     <input id="usuario_logado" hidden disabled name="usuario_logado" type="text" placeholder="" value="<?php echo $_SESSION['usuario'] ?>" class="form-control" required>
                                     <input id="usuario_logado" hidden name="usuario_logado" type="text" placeholder="" value="<?php echo $_SESSION['usuario'] ?>" class="form-control" required>
-
                                 </div>
                                 <div class="form-group has-success">
                                     <div class="form-group" hidden>
@@ -87,11 +92,30 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                                         </div>
                                         <div class="col-6" hidden>
                                             <label for="validade_coreta" hidden class="control-label mb-1">validade correta</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6" hidden>
+                                            <label for="validade_coreta" hidden class="control-label mb-1">validade correta</label>
                                             <div class="input-group">
                                                 <input id="validade_coreta" hidden name="validade_coreta" required placeholder="" type="date" class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" required onKeyPress="valor()" autocomplete="off">
                                             </div>
                                         </div>
 
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <label for="codigo_auditor" class="control-label mb-1">Codigo Auditor</label>
+                                                <input id="data" name="codigo_auditor" type="numbler" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="" autocomplete="cc-exp" required>
+                                                <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <label for="objeto" class="control-label mb-1">Objeto</label>
+                                            <div class="input-group">
+                                                <input id="validade_coreta" hidden name="validade_coreta" required placeholder="" type="date" class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" required onKeyPress="valor()" autocomplete="off">
+                                            </div>
+                                        </div>
                                     </div>
                                     <form method="post" action="" id="from-oresquisa">
                                     <div class="row">
@@ -99,8 +123,7 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                                             <div class="form-group">
                                                 <label for="codigo_auditor" class="control-label mb-1">Codigo Auditor</label>
                                                 <input id="pesquisa2" name="codigo_auditor" type="numbler" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="" autocomplete="cc-exp" required>
-                                                  <i class="resultado2"></i>
-                                                
+                                                  <i class="resultado2"></i>  
                                             </div>
                                         </div>
                                     </form>
@@ -125,7 +148,6 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                                         </div> -->
 
                                         <div class="col-2">
-                                        
                                             <label for="codigo_operador" class="control-label mb-1">Codigo Operador</label>
                                             <div class="input-group">
                                         
@@ -193,6 +215,8 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                 </button></a>
                  </form><br><br>
                 </div>
+            </form><br><br>
+    </div>
                     </div>
                 </div>
             </div>
@@ -204,6 +228,4 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
     <script type="text/javascript" src="personalizado.js"></script>
     <script type="text/javascript" src="presionalizado2.js"></script>
     <script type="text/javascript" src="presionalizado3.js"></script>
-
-
 
