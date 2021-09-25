@@ -54,9 +54,8 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
 </div>
 <div>
 </div>
-
         </div>
-        <div class="container-fluid  fixede ">
+        <div class="container-fluid  fixede">
             <div class="row ">
                 <div class="col-lg-6 aumento">
                     <div class="card aumento">

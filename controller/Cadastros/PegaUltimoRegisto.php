@@ -12,7 +12,7 @@ class PegaUltimoRegisto extends Conexao {
         $numeroPedidoAuditoria = $sql->fetch();
         return $numeroPedidoAuditoria; 
       }else {
-        return "Sem pedido encontrado pra esse usuario";
+        return "Sem pedido encontrado pra esse usuario !";
       }
     }
 }
