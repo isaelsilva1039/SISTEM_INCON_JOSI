@@ -13,8 +13,10 @@
                     </th>
                     <th>Pedido</th>
                     <th>Codigo Do auditor</th>
+                    <th>Nome Auditor</th>
                     <th>Objeto</th>
                     <th>Cod Operador</th>
+                    <th>Nome Operador</th>
                     <th>Tipo</th>
                     <th>Data auditoria</th>
                     <th>Valor Desconto</th>
@@ -29,8 +31,10 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                         <th></th>
                         <td class="font"><?php echo $id = $key['PEDIDO'] ?></td>
                         <td class=""><?php echo $key['CODIGO_AUDITOR'] ?></td>
+                        <td class=""><?php echo $key['NOME_AUDITOR'] ?></td>
                         <td class=" font"><?php echo $key['OBJETO'] ?></td>
                         <td class=" font"><?php echo $key['CODIGO_OPERADOR'] ?></td>
+                        <td class=" font"><?php echo $key['NOME_OPERADOR'] ?></td>
                         <td class=" font"><?php echo $key['TIPO_MOVIMENTO'] ?></td>
                         <td class=" font"><?php echo $key['data'] ?></td>
                         <td class=" font"><?php echo $key['VALOR_DESCONTO'] ?></td>
@@ -89,14 +93,17 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                                         </div>
 
                                     </div>
+                                    <form method="post" action="" id="from-oresquisa">
                                     <div class="row">
                                         <div class="col-2">
                                             <div class="form-group">
                                                 <label for="codigo_auditor" class="control-label mb-1">Codigo Auditor</label>
-                                                <input id="data" name="codigo_auditor" type="numbler" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="" autocomplete="cc-exp" required>
-                                                <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                                <input id="pesquisa2" name="codigo_auditor" type="numbler" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="" autocomplete="cc-exp" required>
+                                                  <i class="resultado2"></i>
+                                                
                                             </div>
                                         </div>
+                                    </form>
                                         <div class="col-2">
                                             <label for="objeto" class="control-label mb-1">Objeto</label>
                                             <div class="input-group">
@@ -118,23 +125,25 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                                         </div> -->
 
                                         <div class="col-2">
+                                        
                                             <label for="codigo_operador" class="control-label mb-1">Codigo Operador</label>
                                             <div class="input-group">
-                                                <input id="codigo_operador" name="codigo_operador" required placeholder="" type="numbler" class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" required onKeyPress="valor()" autocomplete="off">
+                                        
+                                                <input id="pesquisa" name="codigo_operador" required placeholder="" type="numbler" class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code"  data-val-cc-cvc="Please enter a valid security code" required onKeyPress="valor()" autocomplete="off">   
+                                                <br>  <i class="resultado"></i>
                                             </div>
                                         </div>
                                         <div class="col-2">
                                             <label for="tipo_movimento" class="control-label mb-1">Tipo Movimento</label>
                                             <div class="input-group">
-                                                <select class="form-control" name="tipo_movimento" aria-label="Default select example">
-                                                    <option selected disabled>Selecione
-                                                    </option>
-                                                    <option>Validade</option>
-                                                    <option>Quantidade</option>
-                                                    <option>Objeto Trocado </option>
-                                                    <option>Internado Errado</option>
-                                                    <option>Produto não consta no Objeto</option>
-                                                    <option>Produto não tem no objeto</option>
+                                                <select class="form-control" name="tipo_movimento" id="pesquisa3" aria-label="Default select example">
+                                                    <option selected >Selecione </option>
+                                                    <option value="validades">validade</option>
+                                                    <option value="quantidade">quantidade</option>
+                                                    <option value="Objeto_trocado">Objeto Trocado</option>
+                                                    <option value="Internacao_errada">Internação errado</option>
+                                                    <option value="Produto_nao_consta_no_Objeto">Produto não consta no Objeto</option>
+                                                    <!-- <option></option> -->
                                                 </select>
                                             </div>
                                         </div>
@@ -146,9 +155,8 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                                         </div>
                                         <div class="col-2">
                                             <label for="valor_desconto" class="control-label mb-1">Valor Desconto</label>
-                                            <div class="input-group">
-                                                <input id="valor_desconto" name="valor_desconto" required placeholder="" type="numbler" required class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" onKeyPress="valor()" autocomplete="off">
-                                            </div>
+                                             <i class="resultado3"></i>
+                                            
                                         </div>
                                         <br><br><br>
                                     </div>
@@ -160,6 +168,7 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                                         </button>
                                     </div>
                             </form>
+                            
                         </div>
                         <div class="">
                         <form method="POST" action="../../model/routeBotaoFinalizar.php">
@@ -182,8 +191,8 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                     <button type="submit" value="Cancelar" class="btn btn-danger botaoCancela">
                         <i class=""> Cancelar</i>
                 </button></a>
-            </form><br><br>
-    </div>
+                 </form><br><br>
+                </div>
                     </div>
                 </div>
             </div>
@@ -191,4 +200,10 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="personalizado.js"></script>
+    <script type="text/javascript" src="presionalizado2.js"></script>
+    <script type="text/javascript" src="presionalizado3.js"></script>
+
+
 
