@@ -55,22 +55,20 @@ class Cadastro extends Conexao
     }
 
     // cadastra erros dentro do resumo da auditoria 
-    public function cadastroPedidoAuditoriaPorObjetoEpedido($lista, $data, $PEDIDO, $USUARIO_LOGADO, $I0_FILIAL, $CODIGO_AUDITOR, $OBJETO, $VALIDADE_ERRADA, $VALIDADE_CORRETA, $QTD_PEDIDO, $QTD_ENCONTRADO, $CODIGO_OPERADOR, $TIPO_MOVIMENTO, $VALOR_DESCONTO)
+    public function cadastroPedidoAuditoriaPorObjetoEpedido($lista, $data, $PEDIDO, $USUARIO_LOGADO, $I0_FILIAL, $CODIGO_AUDITOR, $NOME_AUDITOR , $OBJETO, $CODIGO_OPERADOR,$NOME_OPERADOR, $TIPO_MOVIMENTO, $VALOR_DESCONTO)
     {
-        $sql = "insert into auditoria_wms_aereo_objetos_atualizada(data, PEDIDO, USUARIO_LOGADO, I0_FILIAL,CODIGO_AUDITOR,OBJETO,VALIDADE_ERRADA,VALIDADE_CORRETA,QTD_PEDIDO,QTD_ENCONTRADO,CODIGO_OPERADOR,NOME_OPERADOR,TIPO_MOVIMENTO,VALOR_DESCONTO)
-      values (:data,:PEDIDO,:USUARIO_LOGADO,:I0_FILIAL,:CODIGO_AUDITOR,:OBJETO,:VALIDADE_ERRADA,:VALIDADE_CORRETA,:QTD_PEDIDO,:QTD_ENCONTRADO,:CODIGO_OPERADOR,':nome_operador',:TIPO_MOVIMENTO,:VALOR_DESCONTO)";
+        $sql = "insert into auditoria_wms_aereo_objetos_atualizada(data, PEDIDO, USUARIO_LOGADO, I0_FILIAL,CODIGO_AUDITOR,NOME_AUDITOR,OBJETO,CODIGO_OPERADOR,NOME_OPERADOR,TIPO_MOVIMENTO,VALOR_DESCONTO)
+      values (:data,:PEDIDO,:USUARIO_LOGADO,:I0_FILIAL,:CODIGO_AUDITOR,:NOME_AUDITOR,:OBJETO,:CODIGO_OPERADOR,:NOME_OPERADOR,:TIPO_MOVIMENTO,:VALOR_DESCONTO)";
         $sql = $this->db->prepare($sql);
         $sql->bindValue(':data', $data);
         $sql->bindValue(':PEDIDO', $PEDIDO);
         $sql->bindValue(':USUARIO_LOGADO', $USUARIO_LOGADO);
         $sql->bindValue(':I0_FILIAL', $I0_FILIAL);
         $sql->bindValue(':CODIGO_AUDITOR', $CODIGO_AUDITOR);
+        $sql->bindValue(':NOME_AUDITOR', $NOME_AUDITOR);
         $sql->bindValue(':OBJETO', $OBJETO);
-        $sql->bindValue(':VALIDADE_ERRADA', $VALIDADE_ERRADA);
-        $sql->bindValue(':VALIDADE_CORRETA', $VALIDADE_CORRETA);
-        $sql->bindValue(':QTD_PEDIDO', $QTD_PEDIDO);
-        $sql->bindValue(':QTD_ENCONTRADO', $QTD_ENCONTRADO);
         $sql->bindValue(':CODIGO_OPERADOR', $CODIGO_OPERADOR);
+        $sql->bindValue(':NOME_OPERADOR', $NOME_OPERADOR);
         $sql->bindValue(':TIPO_MOVIMENTO', $TIPO_MOVIMENTO);
         $sql->bindValue(':VALOR_DESCONTO', $VALOR_DESCONTO);
         $sql->execute();
@@ -78,6 +76,7 @@ class Cadastro extends Conexao
             header('Location: ../views/painel/cadastros.php?pedidoDeAuditoriaEmAndamento');
         } else {
             header('Location: ../views/painel/cadastros.php?erro');
+           
         }
     }
 
