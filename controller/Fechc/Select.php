@@ -28,7 +28,6 @@ class Select extends Conexao
         }
     }
 
-
     public function valorAserDesContadorPorTipoEerroEncontrado($tipo_erro){
         $sql = "SELECT  * FROM tipo_erro WHERE tipo_erro = :tipo_erro order by id desc ";
         $sql = $this->db->prepare($sql);

@@ -11,7 +11,7 @@ include 'config.php';
            $senha   = Configura::senha();
            $host    = Configura::host();
            $dns     = Configura::dns();
-           $porta   = Configura::porta();
+           
 
             try {
                 $this->db = new PDO("$dns:host=$host;dbname=$banco", "$usuario", "$senha");
