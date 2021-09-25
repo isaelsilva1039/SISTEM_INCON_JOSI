@@ -13,7 +13,15 @@
                     </th>
                     <th>Pedido</th>
                     <th>Codigo Do auditor</th>
+<<<<<<< HEAD
                     <th>Nome Auditor</th>
+=======
+
+                    <th>Nome Auditor</th>
+                    <th>Objeto</th>
+                    <th>Cod Operador</th>
+                    <th>Nome Operador</th>
+>>>>>>> cf3dbe7af3e49cd03c9d34923288f1637cce9969
                     <th>Objeto</th>
                     <th>Cod Operador</th>
                     <th>Nome Operador</th>
@@ -32,6 +40,12 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                         <td class="font"><?php echo $id = $key['PEDIDO'] ?></td>
                         <td class=""><?php echo $key['CODIGO_AUDITOR'] ?></td>
                         <td class=""><?php echo $key['NOME_AUDITOR'] ?></td>
+<<<<<<< HEAD
+=======
+                        <td class=" font"><?php echo $key['OBJETO'] ?></td>
+                        <td class=" font"><?php echo $key['CODIGO_OPERADOR'] ?></td>
+                        <td class=" font"><?php echo $key['NOME_OPERADOR'] ?></td>
+>>>>>>> cf3dbe7af3e49cd03c9d34923288f1637cce9969
                         <td class=" font"><?php echo $key['OBJETO'] ?></td>
                         <td class=" font"><?php echo $key['CODIGO_OPERADOR'] ?></td>
                         <td class=" font"><?php echo $key['NOME_OPERADOR'] ?></td>
@@ -61,6 +75,11 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
 
         </div>
         <div class="container-fluid  fixede ">
+<<<<<<< HEAD
+=======
+        </div>
+        <div class="container-fluid  fixede">
+>>>>>>> cf3dbe7af3e49cd03c9d34923288f1637cce9969
             <div class="row ">
                 <div class="col-lg-6 aumento">
                     <div class="card aumento">
@@ -72,7 +91,6 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                                     <label for="usuario_logado" hidden class="control-label mb-1">usuario</label>
                                     <input id="usuario_logado" hidden disabled name="usuario_logado" type="text" placeholder="" value="<?php echo $_SESSION['usuario'] ?>" class="form-control" required>
                                     <input id="usuario_logado" hidden name="usuario_logado" type="text" placeholder="" value="<?php echo $_SESSION['usuario'] ?>" class="form-control" required>
-
                                 </div>
                                 <div class="form-group has-success">
                                     <div class="form-group" hidden>
@@ -83,6 +101,10 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                                             <label for="validade_errada" hidden class="control-label mb-1">validade errada</label>
                                             <div class="input-group">
                                                 <input id="" name="validade_errada" hidden required placeholder="" type="date" class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" onKeyPress="valor()" required autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-6" hidden>
+                                            <label for="validade_coreta" hidden class="control-label mb-1">validade correta</label>
                                             </div>
                                         </div>
                                         <div class="col-6" hidden>
@@ -101,6 +123,23 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                                                 <input id="pesquisa2" name="codigo_auditor" type="numbler" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="" autocomplete="cc-exp" required>
                                                   <i class="resultado2"></i>
                                                 
+                                            </div>
+                                        </div>
+                                    </form>
+                                        <div class="col-2">
+                                            <label for="objeto" class="control-label mb-1">Objeto</label>
+                                            <div class="input-group">
+                                                <input id="validade_coreta" hidden name="validade_coreta" required placeholder="" type="date" class="form-control cc-cvc" value="" data-val="true" data-val-required="Please enter the security code" data-val-cc-cvc="Please enter a valid security code" required onKeyPress="valor()" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <form method="post" action="" id="from-oresquisa">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <label for="codigo_auditor" class="control-label mb-1">Codigo Auditor</label>
+                                                <input id="pesquisa2" name="codigo_auditor" type="numbler" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="" autocomplete="cc-exp" required>
+                                                  <i class="resultado2"></i>  
                                             </div>
                                         </div>
                                     </form>
@@ -193,6 +232,9 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                 </button></a>
                  </form><br><br>
                 </div>
+            </form><br><br>
+    </div>
+
                     </div>
                 </div>
             </div>
