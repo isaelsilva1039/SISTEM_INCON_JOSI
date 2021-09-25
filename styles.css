@@ -17,7 +17,7 @@
 }
 
 .aumento{
-    width: 1411px;
+    width: 1465px;
 }
 
 .botao{
@@ -50,9 +50,7 @@
     margin-left: 40%;
 }
 
-.irParaPedido{
-    /* margin-top: 10px; */
-}
+
 
 .pai_msg{
    width: 800px;
@@ -62,4 +60,16 @@
 .imgTeladepedidoEmAndamento{
     height: 700px;
     width: 600px;
+}
+
+.fixede{
+    position: fixed;
+    /* position: relative; */
+    bottom: 0;
+    z-index: 1;
+}
+
+.font{
+    /* background-color: red; */
+    font-size: xx-small;
 }

@@ -5,7 +5,9 @@ require_once '../../autoload.php';
 $login = new Login();
 $pagarultimoRegisto = new PegaUltimoRegisto;
 $exibirRelatorio = new ExibirPedido();
+// $c = new Conexao;
 $cadastro = new Cadastro();
+
 $login->validaUsuarioLOgado($usuario);
 ?>
 <!DOCTYPE html>
