@@ -15,7 +15,7 @@ $lista[]  =  $NOME_OPERADOR    = $_POST['NOME_OPERADOR'];
 $lista[]  =  $TIPO_MOVIMENTO   = $_POST['tipo_movimento'];
 $lista[]  =  $VALOR_DESCONTO   = $_POST['VALOR_DESCONTO'];
 
-var_dump($_POST);
+
 $cadastros = new Cadastro();
 $cadastros->cadastroPedidoAuditoriaPorObjetoEpedido(
     $lista,
