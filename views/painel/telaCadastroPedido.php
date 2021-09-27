@@ -104,7 +104,6 @@ foreach ($arrayCon = $exibirRelatorio->pegarPedido($pedido) as $key):
                                                 <!-- <label for="codigo_auditor" class="control-label mb-1">Codigo Auditor</label> -->
                                                 <!-- <input id="pesquisa2" name="codigo_auditor" type="numbler" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="" autocomplete="cc-exp" required> -->
                                                   <!-- <i class="resultado2"></i> -->
-                                                
                                             </div>
                                         </div>
                           

@@ -12,11 +12,12 @@ class Select extends Conexao
         if ($sql->rowCount()) {
             foreach ($sql->fetchAll() as $key) {
                 $nome = $key['nome'];
+                $cargo = $key['cargo'];
                 if ($key['cargo'] == '26 - Auditor aereo') {
-                    echo "<br> <input type='text' name='NOME_AUDITOR' disabled class='form-control cc-cvc' value='$nome'>audiotr</input>";
+                    echo "<br> <input type='text' name='NOME_AUDITOR' disabled class='form-control cc-cvc' value='$nome'>$cargo</input>";
                     echo "<br> <input type='text' name='NOME_AUDITOR' hidden class='form-control cc-cvc' value='$nome'></input>";
                 }else {
-                    echo "<br> <input type='text' name='NOME_OPERADOR' disabled class='form-control cc-cvc' value='$nome'>Operador</input>";
+                    echo "<br> <input type='text' name='NOME_OPERADOR' disabled class='form-control cc-cvc' value='$nome'>$cargo</input>";
                     echo "<br> <input type='text' name='NOME_OPERADOR' hidden class='form-control cc-cvc' value='$nome'></input>";
                 }
             }
