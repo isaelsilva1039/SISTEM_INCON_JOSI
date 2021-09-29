@@ -13,7 +13,7 @@ class Select extends Conexao
             foreach ($sql->fetchAll() as $key) {
                 $nome = $key['nome'];
                 $cargo = $key['cargo'];
-                if ($key['cargo'] == '26 - Auditor aereo') {
+                if ($key['cargo'] == '26 - Auditor Aereo') {
                     echo "<br> <input type='text' name='NOME_AUDITOR' disabled class='form-control cc-cvc' value='$nome'>$cargo</input>";
                     echo "<br> <input type='text' name='NOME_AUDITOR' hidden class='form-control cc-cvc' value='$nome'></input>";
                 }else {
@@ -37,7 +37,7 @@ class Select extends Conexao
         if ($sql->rowCount()) {
             foreach ($sql->fetchAll() as $key) {
                    $nome = $key['valor_desconto'];
-                    echo "<br> <input type='text' name='VALOR_DESCONTO' disabled class='form-control cc-cvc' value='$nome'>audiotor";
+                    echo "<br> <input type='text' name='VALOR_DESCONTO' disabled class='form-control cc-cvc' value='$nome'>Valor Desconto";
                     echo "<br> <input type='text' name='VALOR_DESCONTO' hidden class='form-control cc-cvc' value='$nome'></input>";
             }
         } else {

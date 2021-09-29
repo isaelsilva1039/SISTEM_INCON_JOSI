@@ -8,7 +8,7 @@ $lista[]  =  $PEDIDO           = $_POST['pedido'];
 $lista[]  =  $USUARIO_LOGADO   = $_POST['usuario_logado'];
 $lista[]  =  $I0_FILIAL        = $_POST['i0_filial'];
 $lista[]  =  $CODIGO_AUDITOR   = $_POST['codigo_auditor'];
-$lista[]  =  $NOME_AUDITOR     = $_POST['NOME_AUDITOR'];
+             $NOME_AUDITOR     = $_POST['NOME_AUDITOR'];
 $lista[]  =  $OBJETO           = $_POST['objeto'];
 $lista[]  =  $CODIGO_OPERADOR  = $_POST['codigo_operador'];
 $lista[]  =  $NOME_OPERADOR    = $_POST['NOME_OPERADOR'];

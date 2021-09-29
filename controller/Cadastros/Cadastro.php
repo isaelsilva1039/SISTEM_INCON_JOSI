@@ -1,5 +1,5 @@
 <?php
-
+// include('../../conexao/Conexao.php');
 class Cadastro extends Conexao
 {
 
@@ -57,6 +57,10 @@ class Cadastro extends Conexao
     // cadastra erros dentro do resumo da auditoria 
     public function cadastroPedidoAuditoriaPorObjetoEpedido($lista, $data, $PEDIDO, $USUARIO_LOGADO, $I0_FILIAL, $CODIGO_AUDITOR, $NOME_AUDITOR , $OBJETO, $CODIGO_OPERADOR,$NOME_OPERADOR, $TIPO_MOVIMENTO, $VALOR_DESCONTO)
     {
+        if ($this->validarCampoAuditorPreencherComCodicoreto($CODIGO_AUDITOR) == false) {
+            header('Location: ../views/painel/cadastros.php?erro');
+            exit();
+        }
         $sql = "insert into auditoria_wms_aereo_objetos_atualizada(data, PEDIDO, USUARIO_LOGADO, I0_FILIAL,CODIGO_AUDITOR,NOME_AUDITOR,OBJETO,CODIGO_OPERADOR,NOME_OPERADOR,TIPO_MOVIMENTO,VALOR_DESCONTO)
       values (:data,:PEDIDO,:USUARIO_LOGADO,:I0_FILIAL,:CODIGO_AUDITOR,:NOME_AUDITOR,:OBJETO,:CODIGO_OPERADOR,:NOME_OPERADOR,:TIPO_MOVIMENTO,:VALOR_DESCONTO)";
         $sql = $this->db->prepare($sql);
@@ -92,4 +96,26 @@ class Cadastro extends Conexao
             return $resut = 2;
         }
     }
+
+    public function validarCampoAuditorPreencherComCodicoreto($CODIGO_AUDITOR){
+        $consutarUsuarioAuditor= "SELECT * FROM usuarios_filial WHERE numero_usuario = :numero_usuario";
+        $consutarUsuarioAuditor = $this->db->prepare($consutarUsuarioAuditor);
+        $consutarUsuarioAuditor->bindValue(':numero_usuario', $CODIGO_AUDITOR);
+        $consutarUsuarioAuditor->execute();
+            if ($consutarUsuarioAuditor->rowCount() > 0) {
+                foreach ($consutarUsuarioAuditor->fetchAll() as $key ) {
+                    $cargo_do_codigo_do_auditor = $key['cargo'];
+                    if ($cargo_do_codigo_do_auditor != '26 - Auditor Aereo') {
+                        return false;
+                    }else {
+                        return  true;
+                    }
+                }
+            }
+    }
+
 }
+
+
+// $cadastro = new Cadastro();
+// var_dump($cadastro->validarCampoAuditorPreencherComCodicoreto(9575));

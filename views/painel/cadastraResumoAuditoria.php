@@ -24,7 +24,7 @@
                                     <label for="nome" class="control-label mb-1">usuario</label>
                                     <input id="nome" disabled name="usuario_logado" type="text" placeholder="" value="<?php echo $_SESSION['usuario'] ?>" class="form-control" required>
                                     <input id="nome" hidden name="usuario_logado" type="text" placeholder="" value="<?php echo $_SESSION['usuario'] ?>" class="form-control" required>
-                                </div>
+                                   </div>
                                 <div class="form-group has-success">
                                     <label for="i0_filial" class="control-label mb-1">Filial</label>
                                     <select class="form-control" name="i0_filial" aria-label="Default select example">
