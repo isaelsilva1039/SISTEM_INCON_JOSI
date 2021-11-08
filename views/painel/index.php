@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once '../../autoload.php';
 $login = new Login();
@@ -18,9 +18,9 @@ $login->validaUsuarioLOgado($usuario);
     <!-- Title Page-->
     <title>Dashboard</title>
 
-    <?php 
-    require 'head_css.html';
-     ?>
+    <?php
+require 'head_css.html';
+?>
 </head>
 
 <body class="animsition">
@@ -156,7 +156,7 @@ $login->validaUsuarioLOgado($usuario);
                             <a class="js-arrow" href="index.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                
+
                             </ul>
                         </li>
                         <li>
@@ -246,7 +246,7 @@ $login->validaUsuarioLOgado($usuario);
         <!-- PAGE CONTAINER-->
         <div class="page-container">
             <!-- HEADER DESKTOP-->
-            <?php require 'header.php'; ?>
+            <?php require 'header.php';?>
             <!-- HEADER DESKTOP-->
             <!-- MAIN CONTENT-->
             <div class="main-content">
@@ -397,7 +397,7 @@ $login->validaUsuarioLOgado($usuario);
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
@@ -415,8 +415,8 @@ $login->validaUsuarioLOgado($usuario);
     </div>
 
     <?php
-    require 'footJavascrip.html';
-    ?>
+require 'footJavascrip.html';
+?>
 
 </body>
 

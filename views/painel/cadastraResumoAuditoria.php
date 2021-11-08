@@ -3,7 +3,8 @@
         <div class="container-fluid">
             <div class="form-group">
                 
-            <?php if($cadastro->ValidadePedidoEmdigitaCaoUsuarioLogado($_SESSION['usuario']) == 1){?>
+            <?php
+             if($cadastro->ValidadePedidoEmdigitaCaoUsuarioLogado($_SESSION['usuario']) == 1){?>
 
                 <label for="tipo_auditoria" class="control-label mb-1">Voce tem pedidos em Digitação</label>
                 <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"><a href="cadastros.php?pedidoDeAuditoriaEmAndamento">Click aqui</a></span>
@@ -15,7 +16,7 @@
                         <div class="card-header">Cadastra Resumo De Auditoria</div>
                         <div class="card-body">
                             <div class="card-title">
-                                <h3 class="text-center title-2">Lançar Reusmo da Auditoria
+                                <h3 class="text-center title-2">Cadastra reusmo da auditoria
                                 </h3>
                             </div>
                             <hr>
@@ -28,13 +29,11 @@
                                 <div class="form-group has-success">
                                     <label for="i0_filial" class="control-label mb-1">Filial</label>
                                     <select class="form-control" name="i0_filial" aria-label="Default select example">
-                                        <option selected disabled>Selecione
-                                        </option>
-                                        <option>Armazem mateus S.A CD-87</option>
-                                        <option>Armazem mateus S.A CD-81</option>
-                                        <option>Armazem mateus S.A CD-116</option>
-                                        <option>Armazem mateus S.A CD-331</option>
-                                        <option>Armazem mateus S.A CD-101</option>
+                                        <option selected disabled>Selecione    
+                                    </option>
+                                    <?php {?>
+                                        <?php $select->pegarFilial(); ?>
+                                    <?php } ?>
                                     </select>
                                 </div>
                                 <div class="form-group has-success">

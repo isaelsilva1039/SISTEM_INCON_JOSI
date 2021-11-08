@@ -7,6 +7,8 @@ $pagarultimoRegisto = new PegaUltimoRegisto;
 $exibirRelatorio = new ExibirPedido();
 // $c = new Conexao;
 $cadastro = new Cadastro();
+$select = new Select();
+
 
 $login->validaUsuarioLOgado($usuario);
 ?>

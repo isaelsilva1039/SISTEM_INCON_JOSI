@@ -1,34 +1,31 @@
 <?php
 require '../controller/Cadastros/Cadastro.php';
-// require '../../controller/Fechc/ExibirPedido.php';
+
 class Updat extends Cadastro
 {
-    public function aterarStatusDoPedidoAudiritaDoResumo($pedido)
-    {
-
-       
-        $sql = "UPDATE auditoria_wms_aereo_atualizada SET status = 'Finalizado' where id = '$pedido'";
-        $sql = $this->db->prepare($sql);
-        $sql->execute();
-        if ($sql->rowCount() > 0) {
+    // alterar status do pedido quando clicar em finalizar
+    public function aterarStatusDoPedidoAudiritaDoResumo($pedido) {
+        $mudarStatusDoPeidoPraFinalizado = "UPDATE auditoria_wms_aereo_atualizada SET status = 'Finalizado' where id = '$pedido'";
+        $mudarStatusDoPeidoPraFinalizado = $this->db->prepare($mudarStatusDoPeidoPraFinalizado);
+        $mudarStatusDoPeidoPraFinalizado->execute();
+        if ($mudarStatusDoPeidoPraFinalizado->rowCount() > 0) {
             header('Location: ../views/painel/cadastros.php?cadastro_erros_aereo');
         } else {
             header('Location: ../views/painel/cadastros.php?erro');
         }
     }
-
-    public function naoPodeFinalizarPedidoVazio($pedido)
-    {
-        $sql = "SELECT  * FROM auditoria_wms_aereo_objetos_atualizada WHERE PEDIDO = :PEDIDO ";
-        $sql = $this->db->prepare($sql);
-        $sql->bindValue(':PEDIDO', $pedido);
-        $sql->execute();
-        if ($sql->rowCount()) {
+    // fazer consulta no banco: caso não ejar registro encontrados: retornar 2 (usado no front pra esconder o botao de finalizar pedido sem item cadastrado)
+    public function naoPodeFinalizarPedidoVazio($pedido): int{
+        $naopodemudarPedidoVaziaoEsconderBotaoNatela = "SELECT  * FROM auditoria_wms_aereo_objetos_atualizada WHERE PEDIDO = :PEDIDO ";
+        $naopodemudarPedidoVaziaoEsconderBotaoNatela = $this->db->prepare($naopodemudarPedidoVaziaoEsconderBotaoNatela);
+        $naopodemudarPedidoVaziaoEsconderBotaoNatela->bindValue(':PEDIDO', $pedido);
+        $naopodemudarPedidoVaziaoEsconderBotaoNatela->execute();
+        if ($naopodemudarPedidoVaziaoEsconderBotaoNatela->rowCount()) {
             return  1;
         } else {
-            $sql = "SELECT  * FROM auditoria_wms_aereo_objetos_atualizada WHERE PEDIDO = '1' ";
-            $sql = $this->db->prepare($sql);
-            $sql->execute();
+            $naopodemudarPedidoVaziaoEsconderBotaoNatela = "SELECT  * FROM auditoria_wms_aereo_objetos_atualizada WHERE PEDIDO = '1' ";
+            $naopodemudarPedidoVaziaoEsconderBotaoNatela = $this->db->prepare($naopodemudarPedidoVaziaoEsconderBotaoNatela);
+            $naopodemudarPedidoVaziaoEsconderBotaoNatela->execute();
             return 2;
         }
     }

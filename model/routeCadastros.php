@@ -10,5 +10,5 @@ include '../conexao/Conexao.php';
   
   $cadastros = new Cadastro;
   
-  // $cadastros->cadastroDizimista($nome,$endereco,$telefone,$data_nascimento,$idade
+  $cadastros->cadastroDizimista($nome,$endereco,$telefone,$data_nascimento,$idade
     );
