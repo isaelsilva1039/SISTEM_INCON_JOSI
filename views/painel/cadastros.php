@@ -163,7 +163,7 @@ require 'head_css.html';
                         </li>
                         <li>
                             <a href="cadastros.php?cadastro_erros_aereo">
-                                <i class="fas fa-chart-bar"></i>Cadastrar Erros Aereo</a>
+                                <i class="fas fa-copy"></i>Cadastrar Erros Aereo</a>
                         </li>
 
                         <!--
